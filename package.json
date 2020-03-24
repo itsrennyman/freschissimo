@@ -1,0 +1,25 @@
+{
+  "name": "freschissimo",
+  "version": "1.0.0",
+  "description": "Node JS Minimal API Gateway",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+itsrennyman/freschissimo.git"
+  },
+  "keywords": [
+    "nodejs",
+    "gateway",
+    "api",
+    "microservices"
+  ],
+  "author": "Renato Pozzi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsrennyman/freschissimo/issues"
+  },
+  "homepage": "https://github.com/itsrennyman/freschissimo#readme"
+}
