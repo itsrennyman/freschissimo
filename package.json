@@ -24,6 +24,10 @@
   "homepage": "https://github.com/itsrennyman/freschissimo#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-http-proxy": "^1.6.0"
+    "express-http-proxy": "^1.6.0",
+    "js-yaml": "^3.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }

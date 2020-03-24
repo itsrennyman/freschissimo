@@ -1,0 +1,31 @@
+# Configuration for API Gateway
+
+endpoints: 
+  pokeApi:
+    paths: 
+      - '/api/v2/pokemon'
+      - '/api/v2/pokemon/*'
+    methods: 
+      - GET
+  swApi:
+    paths: 
+      - '/api/v2/pokemon'
+    methods: 
+      - GET
+
+pipelines:
+  pokemonService:
+    endpoints:
+      - pokeApi
+    policies:
+      proxy:
+        forwardTo: 'https://pokeapi.co'
+  starwarsService:
+    endpoints:
+      - swApi
+    policies:
+      proxy:
+        forwardTo: 'https://swapi.co'
+
+        
+  
