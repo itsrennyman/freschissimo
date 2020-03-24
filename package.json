@@ -21,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/itsrennyman/freschissimo/issues"
   },
-  "homepage": "https://github.com/itsrennyman/freschissimo#readme"
+  "homepage": "https://github.com/itsrennyman/freschissimo#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-http-proxy": "^1.6.0"
+  }
 }
