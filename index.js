@@ -36,7 +36,7 @@ app.get('*', (req, res, next) => {
     if (checkPathExists(endpoint, req)) {
       // If method is allowed
       if (endpoint.methods.indexOf(req.method) !== -1) {
-        // Needs to get where to Proxy
+        // Get the pipeline which contains endpoint
         const pipeline = Object.keys(config.pipelines).find(pipelineName => {
           return config.pipelines[pipelineName].endpoints.indexOf(name) !== -1
         });
@@ -44,6 +44,10 @@ app.get('*', (req, res, next) => {
         if (!pipeline)
           return res.status(500).send('Cannot find pipeline for this endpoint');
 
+        // Start policies check:
+        
+
+        // Proxy request: currently is mandatory.
         return httpProxy(config.pipelines[pipeline].policies.proxy.forwardTo)(req, res, next);
       } else {
         return res.status(405).send('Method not allowed');
