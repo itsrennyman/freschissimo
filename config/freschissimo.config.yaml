@@ -7,9 +7,9 @@ endpoints:
       - '/api/v2/pokemon/*'
     methods: 
       - GET
-  swApi:
+  pokeApiProtected:
     paths: 
-      - '/api/v2/pokemon'
+      - '/api/v2/ability'
     methods: 
       - GET
 
@@ -22,10 +22,12 @@ pipelines:
         forwardTo: 'https://pokeapi.co'
   starwarsService:
     endpoints:
-      - swApi
+      - pokeApiProtected
     policies:
+      jwt: 
+        verifySecret: true # Todo false case.
       proxy:
-        forwardTo: 'https://swapi.co'
+        forwardTo: 'https://pokeapi.co'
 
         
   
