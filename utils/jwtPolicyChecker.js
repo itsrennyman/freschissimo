@@ -1,4 +1,4 @@
-const User = require('./admin/models/User.js');
+const User = require('../admin/models/User.js');
 
 const jwtPolicyChecker = async function (req) {
   try {
