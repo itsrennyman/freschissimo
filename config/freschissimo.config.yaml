@@ -7,25 +7,37 @@ endpoints:
       - '/api/v2/pokemon/*'
     methods: 
       - GET
-  pokeApiProtected:
+  pokeApiProtectedJWT:
     paths: 
       - '/api/v2/ability'
     methods: 
       - GET
+  pokeApiProtectedBasicAuth:
+    paths: 
+      - '/api/v2/type'
+    methods: 
+      - GET
 
 pipelines:
-  pokemonService:
+  pokeApiService:
     endpoints:
       - pokeApi
     policies:
       proxy:
         forwardTo: 'https://pokeapi.co'
-  starwarsService:
+  pokeApiProtectedJWTService:
     endpoints:
-      - pokeApiProtected
+      - pokeApiProtectedJWT
     policies:
       jwt: 
-        verifySecret: true # Todo false case.
+        verifySecret: true # //TODO: false case.
+      proxy:
+        forwardTo: 'https://pokeapi.co'
+  pokeApiProtectedBasicAuthService:
+    endpoints:
+      - pokeApiProtectedBasicAuth
+    policies:
+      basicAuth: 
       proxy:
         forwardTo: 'https://pokeapi.co'
 

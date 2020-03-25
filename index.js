@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken')
 const checkPathExists = require('./utils/checkPathExists.js')
 const getConfiguration = require('./utils/getConfiguration.js')
 const jwtPolicyChecker = require('./utils/jwtPolicyChecker.js')
+const basicAuthPolicyChecker = require('./utils/basicAuthPolicyChecker.js')
 
 const UserController = require('./admin/controllers/UserController.js');
 
@@ -58,6 +59,9 @@ gateway.get('*', async (req, res, next) => {
           switch (policy) {
             case 'jwt':
               if (! await jwtPolicyChecker(req))
+                return res.status(401).send('Unauthorized');
+            case 'basicAuth':
+              if (! await basicAuthPolicyChecker(req))
                 return res.status(401).send('Unauthorized');
             default:
               break;
