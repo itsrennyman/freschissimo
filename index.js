@@ -31,7 +31,7 @@ gateway.get('/freschissimo', (req, res, next) => {
   res.send(config);
 })
 
-gateway.get('*', async (req, res, next) => {
+gateway.all('*', async (req, res, next) => {
   // Managed by configuration YAML
   const config = getConfiguration();
 
