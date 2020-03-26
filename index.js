@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const bodyParser = require('body-parser')
 const httpProxy = require('express-http-proxy')
+const cors = require('cors');
 const jwt = require('jsonwebtoken')
 
 const checkPathExists = require('./utils/checkPathExists.js')
@@ -18,6 +19,7 @@ const gateway = express()
 const admin = express()
 
 // Configuration
+gateway.use(cors());
 admin.use(express.json());
 admin.use(bodyParser.json());
 admin.use(bodyParser.urlencoded({ extended: true })); 
