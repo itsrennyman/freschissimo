@@ -11,7 +11,7 @@ class UserController {
   }
 
   show(req, res) {
-    User.findById(req.params.id).exec()
+    User.findOne({ username: req.params.username }).exec()
       .then(resource => res.send(resource))
       .catch(err => res.status(500).send(err))
   }
@@ -37,7 +37,7 @@ class UserController {
     if (basicAuthCredential > 0) 
       req.body.credentials[basicAuthCredential].password = bcrypt.hashSync(req.body.credentials[basicAuthCredential].password, 10)
 
-    User.findByIdAndUpdate(req.params.id, req.body)
+    User.findOneAndUpdate({ username: req.params.username }, req.body)
       .then(() => res.send())
       .catch(err => res.status(500).send(err))
   }

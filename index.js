@@ -83,8 +83,8 @@ gateway.all('*', async (req, res, next) => {
 // Admin Side
 admin.get('/users', (req, res) => new UserController().index(req, res));
 admin.post('/users', (req, res) => new UserController().store(req, res));
-admin.get('/users/:id', (req, res) => new UserController().show(req, res));
-admin.put('/users/:id', (req, res) => new UserController().update(req, res));
+admin.get('/users/:username', (req, res) => new UserController().show(req, res));
+admin.put('/users/:username', (req, res) => new UserController().update(req, res));
 
 
 // Initialize Connection
