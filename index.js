@@ -54,17 +54,19 @@ gateway.all('*', async (req, res, next) => {
         if (!pipeline)
           return res.status(500).send('Cannot find pipeline for this endpoint');
 
-        // Start policies check: The proxy is the last.
-        for (const policy of Object.keys(config.pipelines[pipeline].policies)) {
-          switch (policy) {
-            case 'jwt':
-              if (! await jwtPolicyChecker(req))
-                return res.status(401).send('Unauthorized');
-            case 'basicAuth':
-              if (! await basicAuthPolicyChecker(req))
-                return res.status(401).send('Unauthorized');
-            default:
-              break;
+        if (req.method !== 'OPTIONS') {
+          // Start policies check: The proxy is the last.
+          for (const policy of Object.keys(config.pipelines[pipeline].policies)) {
+            switch (policy) {
+              case 'jwt':
+                if (! await jwtPolicyChecker(req))
+                  return res.status(401).send('Unauthorized');
+              case 'basicAuth':
+                if (! await basicAuthPolicyChecker(req))
+                  return res.status(401).send('Unauthorized');
+              default:
+                break;
+            }
           }
         }
 
