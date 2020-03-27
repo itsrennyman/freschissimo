@@ -1,6 +1,14 @@
 # Configuration for API Gateway
 
 endpoints: 
+  admin:
+    paths: 
+      - '/users'
+      - '/users/*'
+    methods: 
+      - GET
+      - POST
+      - PUT
   pokeApi:
     paths: 
       - '/api/v2/pokemon'
@@ -19,6 +27,12 @@ endpoints:
       - GET
 
 pipelines:
+  admin:
+    endpoints:
+      - admin
+    policies:
+      proxy:
+        forwardTo: 'http://localhost:3058'
   pokeApiService:
     endpoints:
       - pokeApi

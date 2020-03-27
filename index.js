@@ -89,7 +89,8 @@ admin.get('/users', (req, res) => new UserController().index(req, res));
 admin.post('/users', (req, res) => new UserController().store(req, res));
 admin.get('/users/:username', (req, res) => new UserController().show(req, res));
 admin.put('/users/:username', (req, res) => new UserController().update(req, res));
-
+admin.post('/users/:username/credentials', (req, res) => new UserController().storeUserCredential(req, res));
+admin.put('/users/:username/credentials/:id', (req, res) => new UserController().updateUserCredential(req, res));
 
 // Initialize Connection
 mongoose.connect(process.env.MONGO_URL, {
