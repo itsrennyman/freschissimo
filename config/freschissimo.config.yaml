@@ -36,9 +36,7 @@ pipelines:
   pokeApiService:
     endpoints:
       - pokeApi
-    policies:
-      proxy:
-        forwardTo: 'https://pokeapi.co'
+    url: 'https://pokeapi.co' # No Proxy
   pokeApiProtectedJWTService:
     endpoints:
       - pokeApiProtectedJWT
