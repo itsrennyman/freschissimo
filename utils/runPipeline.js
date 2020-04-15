@@ -4,7 +4,7 @@ const getConfiguration = require("./getConfiguration.js");
 const jwtPolicyChecker = require("./jwtPolicyChecker.js");
 const basicAuthPolicyChecker = require("./basicAuthPolicyChecker.js");
 
-module.exports = runPipeline = async (req, res, pipeline) => {
+const runPipeline = async (req, res, pipeline) => {
   // Managed by configuration YAML
   const config = getConfiguration();
 
@@ -20,9 +20,11 @@ module.exports = runPipeline = async (req, res, pipeline) => {
       case "jwt":
         if (!(await jwtPolicyChecker(req)))
           return res.status(401).send("Unauthorized");
+        break;
       case "basicAuth":
         if (!(await basicAuthPolicyChecker(req)))
           return res.status(401).send("Unauthorized");
+        break;
       case "proxy":
         hasProxy = true;
         break;
@@ -41,3 +43,5 @@ module.exports = runPipeline = async (req, res, pipeline) => {
   // No policies or all checks done? Good!
   return res.redirect(`${config.pipelines[pipeline].url}${req.url}`);
 };
+
+module.exports = runPipeline;

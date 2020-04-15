@@ -3,7 +3,7 @@ const express = require("express");
 const getConfiguration = require("./utils/getConfiguration");
 const runPipeline = require("./utils/runPipeline");
 
-module.exports = initRoutes = () => {
+const initRoutes = () => {
   let router = express.Router();
 
   // Managed by configuration YAML
@@ -34,3 +34,5 @@ module.exports = initRoutes = () => {
 
   return router;
 };
+
+module.exports = initRoutes;
