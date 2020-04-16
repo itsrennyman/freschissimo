@@ -11,7 +11,7 @@ const UserController = require("./admin/controllers/UserController.js");
 
 dotenv.config();
 
-const gateway = express();
+let gateway = express();
 const admin = express();
 
 // Configuration
@@ -28,7 +28,7 @@ gateway.get("/freschissimo", (req, res) => {
   res.send(config);
 });
 
-gateway.use("*", initRoutes());
+gateway = initRoutes(gateway);
 
 // Admin Side
 admin.get("/users", (req, res) => new UserController().index(req, res));
