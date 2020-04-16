@@ -1,0 +1,27 @@
+{
+  "name": "freschissimo-ui",
+  "version": "1.0.0",
+  "description": "User Interface of Freschissimo API Gateway",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next -p 8080",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "freschissimo",
+    "api",
+    "gateway",
+    "node",
+    "admin",
+    "ux"
+  ],
+  "author": "Renato Pozzi",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^9.3.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
