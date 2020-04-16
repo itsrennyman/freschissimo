@@ -15,7 +15,7 @@ const runPipeline = async (req, res, pipeline) => {
   // Start policies check: The proxy is the last set a flag here for performance.
   let hasProxy = false;
 
-  for (const policy of Object.keys(config.pipelines[pipeline].policies)) {
+  for (const policy of Object.keys(config.pipelines[pipeline].policies || [])) {
     switch (policy) {
       case "jwt":
         if (!(await jwtPolicyChecker(req)))
