@@ -1,5 +1,3 @@
-const express = require("express");
-
 const getConfiguration = require("./utils/getConfiguration");
 const runPipeline = require("./utils/runPipeline");
 
