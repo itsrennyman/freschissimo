@@ -1,3 +1,4 @@
+import Router from "next/router";
 import React, { Component, Fragment } from "react";
 import {
   Header,
@@ -88,9 +89,14 @@ class User extends Component {
           jwtCredentials
         );
 
-        window.location.href = "/users";
+        await this.getUser(response.data.username);
+
+        showToast({ variant: "green-600", text: "Utente Creato!" });
+        Router.replace("/users/[username]", `/users/${response.data.username}`);
+        setSubmitting(false);
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log(e);
         showToast({ variant: "red-600", text: "Si è verificato un errore.." });
         setSubmitting(false);
       });
@@ -115,17 +121,15 @@ class User extends Component {
 
     const payload = Object.assign({}, data, { credentials: credentials });
 
-    Gateway.put("/users/" + this.props.match.params.username, payload)
+    Gateway.put("/users/" + this.props.params.username, payload)
       .then(async () => {
         for (let i = 0; i < credentials.length; i++) {
           await Gateway.put(
-            "/users/" +
-              this.props.match.params.username +
-              "/credentials/" +
-              credentials[i].id,
+            `/users/${payload.username}/credentials/${credentials[i].id}`,
             credentials[i]
           );
         }
+        Router.replace("/users/[username]", `/users/${payload.username}`);
         setSubmitting(false);
         showToast({ variant: "green-600", text: "Dati Aggiornati!" });
       })

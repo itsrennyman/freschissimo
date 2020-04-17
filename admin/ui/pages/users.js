@@ -78,7 +78,10 @@ class Users extends Component {
         <Header
           text="Users List"
           actions={
-            <Button variant="blue" onClick={() => {}}>
+            <Button
+              variant="blue"
+              onClick={() => Router.push("/users/[username]", `/users/new`)}
+            >
               Crea Nuovo
             </Button>
           }
