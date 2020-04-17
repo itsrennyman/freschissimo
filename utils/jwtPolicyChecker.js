@@ -18,11 +18,7 @@ const jwtPolicyChecker = async function (req) {
     // Get credential JWT
     const jwtCredential = user.credentials.find((x) => x.type === "jwt");
 
-    try {
-      jwt.verify(token, jwtCredential.secret);
-    } catch (e) {
-      return false;
-    }
+    jwt.verify(token, jwtCredential.secret);
   } catch (err) {
     return false;
   }
