@@ -16,7 +16,10 @@ let gateway = express();
 const admin = express();
 
 // Configuration
-gateway.use(pino());
+if (process.env.NODE_ENV !== "testing") {
+  gateway.use(pino());
+}
+
 gateway.use(cors());
 admin.use(express.json());
 admin.use(bodyParser.json());
@@ -67,3 +70,5 @@ mongoose
   .catch((err) => console.log(err));
 
 mongoose.set("useFindAndModify", false);
+
+module.exports = gateway;
