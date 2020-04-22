@@ -1,4 +1,4 @@
-const request = require("supertest");
+let request = require("supertest");
 
 describe("Load Freschissimo and check example config", function () {
   var server;
