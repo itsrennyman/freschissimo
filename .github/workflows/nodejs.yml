@@ -29,3 +29,11 @@ jobs:
     - run: npm test
       env:
         CI: true
+        MONGO_URL: "mongodb://admin:password@localhost:27017/test?authSource=admin&retryWrites=true&w=majority"
+
+services:
+  mongo:
+    image: mongo:3.6.16-xenial
+    variables:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
