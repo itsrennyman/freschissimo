@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const pino = require("express-pino-logger");
 
 const initRoutes = require("./initRoutes");
 const getConfiguration = require("./utils/getConfiguration.js");
@@ -15,6 +16,7 @@ let gateway = express();
 const admin = express();
 
 // Configuration
+gateway.use(pino());
 gateway.use(cors());
 admin.use(express.json());
 admin.use(bodyParser.json());
