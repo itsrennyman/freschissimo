@@ -1,4 +1,4 @@
-<p align="center"><img src="./logo.svg" width="60%"></p>
+<p align="center"><img src="./logo.svg" width="60%"><br/><br/></p>
 
 [![StyleCI](https://github.styleci.io/repos/249683371/shield?branch=master)](https://github.styleci.io/repos/249683371)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=itsrennyman_freschissimo&metric=alert_status)](https://sonarcloud.io/dashboard?id=itsrennyman_freschissimo)
