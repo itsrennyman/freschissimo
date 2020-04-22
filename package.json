@@ -1,6 +1,6 @@
 {
   "name": "freschissimo",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "Node JS Minimal API Gateway",
   "main": "index.js",
   "scripts": {
