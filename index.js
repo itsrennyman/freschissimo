@@ -7,6 +7,7 @@ const pino = require("express-pino-logger");
 
 const initRoutes = require("./initRoutes");
 const getConfiguration = require("./utils/getConfiguration.js");
+const isDatabaseProvided = require("./utils/isDatabaseProvided.js");
 
 const UserController = require("./admin/controllers/UserController.js");
 
@@ -51,24 +52,32 @@ admin.put("/users/:username/credentials/:id", (req, res) =>
   new UserController().updateUserCredential(req, res)
 );
 
-// Initialize Connection
-mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    // Start Gateway
-    gateway.listen(3000, () => {
-      console.log("Freschissimo listening on port 3000!");
-    });
-    // Start Admin
-    admin.listen(3058, () => {
-      console.log("Freschissimo Admin listening on port 3058!");
-    });
-  })
-  .catch((err) => console.log(err));
+// Initialize Connection only if MONGO_URL is provided.
+if (isDatabaseProvided()) {
+  mongoose
+    .connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(() => {
+      startServices();
+    })
+    .catch((err) => console.log(err));
 
-mongoose.set("useFindAndModify", false);
+  mongoose.set("useFindAndModify", false);
+} else {
+  startServices();
+}
+
+function startServices() {
+  // Start Gateway
+  gateway.listen(3000, () => {
+    console.log("Freschissimo listening on port 3000!");
+  });
+  // Start Admin
+  admin.listen(3058, () => {
+    console.log("Freschissimo Admin listening on port 3058!");
+  });
+}
 
 module.exports = gateway;
