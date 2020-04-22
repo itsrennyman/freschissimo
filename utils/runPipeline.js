@@ -8,7 +8,7 @@ const runPipeline = async (req, res, pipeline) => {
   // Managed by configuration YAML
   const config = getConfiguration();
 
-  console.log("runPipeline", pipeline, config.pipelines[pipeline].policies);
+  // console.log("runPipeline", pipeline, config.pipelines[pipeline].policies);
 
   if (!config) return res.status(500).send("Error during read configuration.");
 
