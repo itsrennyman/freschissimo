@@ -7,23 +7,22 @@
 
 ## About Freschissimo
 
-Todo
+Need an API Gateway? Maybe you need also a simple configuration, and a log system fully integrated? Welcome in Paradise!
 
-## Installation
+Based on the Rock Solid ExpressJS Router, Freschissimo allows you set up a simple gateway with very few lines of yaml configuration. Follow the instruction to get started!
 
-Clone the repository
+### Give me a star for the project support! The badges speak for me <3
+
+## Hyper Lazy Up And Running
+
+Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/itsrennyman/freschissimo.git
-```
-
-Install Dependencies
-
-```bash
 cd freschissimo && npm install
 ```
 
-Start gateway
+Start Freschisismo
 
 ```bash
 node index.js
@@ -33,3 +32,10 @@ By starting the service, will be exposed two services:
 
 - At localhost:3000 the Gateway endpoints
 - At localhost:3058 the Admin APIs
+
+With this no-config procedure, Freschissimo take the default configuration file stored in the config directory. That file is already configured with some Endpoint from the super [PokeAPI](https://pokeapi.co/). You can try it. With zero configurazion needed. Cool yeah?
+
+In Progress:
+- Documentation
+- Admin UI
+- 10 Stars Reach :) (Gimme a Star in Order to Support the project)
