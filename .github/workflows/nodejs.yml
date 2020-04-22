@@ -14,6 +14,13 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      mongo:
+        image: mongo:3.6.16-xenial
+        env:
+          MONGO_INITDB_ROOT_USERNAME: admin
+          MONGO_INITDB_ROOT_PASSWORD: password
+
     strategy:
       matrix:
         node-version: [10.x, 12.x]
@@ -30,10 +37,3 @@ jobs:
       env:
         CI: true
         MONGO_URL: "mongodb://admin:password@localhost:27017/test?authSource=admin&retryWrites=true&w=majority"
-
-services:
-  mongo:
-    image: mongo:3.6.16-xenial
-    variables:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password
