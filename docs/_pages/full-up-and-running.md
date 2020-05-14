@@ -22,6 +22,8 @@ With this no-config procedure, Freschissimo take the default configuration file 
 
 With no configuration, you can use Freschissimo as simple gateway for your APIs, but if you need to use some extra features like policies, keep in mind that you need to set up a database storage.
 
+## Database Storage
+
 Currently Freschissimo works with MongoDB, to use the storage, just copy the *.env.example* in *.env* and fill the **MONGO_URL** with your mongo instance. 
 
 "But i need the initial data in order to try it.."
