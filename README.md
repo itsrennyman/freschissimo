@@ -11,7 +11,7 @@ Need an API Gateway? Maybe you need also a simple configuration, and a log syste
 
 Based on the Rock Solid ExpressJS Router, Freschissimo allows you set up a simple gateway with very few lines of yaml configuration. Follow the instruction to get started!
 
-### Give me a star for the project support! The badges speak for me <3
+### Give me a star for the project support! Badges speak for me <3
 
 ## Hyper Lazy Up And Running
 
