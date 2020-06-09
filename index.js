@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const fs = require("fs");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -79,5 +80,11 @@ function startServices() {
     console.log("Freschissimo Admin listening on port 3058!");
   });
 }
+
+fs.watchFile('./config/freschissimo.config.yaml', (curr, prev) => {
+  console.log("Freschissimo Configuration Changed..");
+
+  gateway = initRoutes(gateway);
+});
 
 module.exports = gateway;
